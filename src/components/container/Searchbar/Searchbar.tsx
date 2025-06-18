@@ -29,6 +29,7 @@ const Searchbar: React.FC = () => {
     } else if (currentNameParam !== keyword) {
       setKeyword(currentNameParam);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, searchParams]);
 
   return (
@@ -46,10 +47,7 @@ const Searchbar: React.FC = () => {
       <div className="flex gap-2 items-center justify-center">
         {keyword !== "" && (
           <button
-            onClick={() => {
-              setKeyword("");
-              router.push(pathname); // Clear search param from URL if keyword is cleared
-            }}
+            onClick={() => setKeyword("")}
             className="w-[20px] h-[20px] rounded-full bg-neutral-400 flex justify-center items-center cursor-pointer"
           >
             <p className="text-[10px] text-white">x</p>

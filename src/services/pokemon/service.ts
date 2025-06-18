@@ -1,22 +1,21 @@
-import { api } from '../api';
-import { pokemonService } from './endpoints';
+import { localApi } from "../api-local";
 
 const getPokemonList = async (pageParams: number = 10) => {
-  const response = await api.get(
-    `${pokemonService.getPokemon}?limit=10&offset=${pageParams}`
+  const response = await localApi.get(
+    `/api/pokemon?limit=10&offset=${pageParams}`
   );
   const { data } = response;
   return { ...data, pageParams };
 };
 
 const getDetailPokemon = async (id: string) => {
-  const response = await api.get(`${pokemonService.getPokemon}/${id}`);
+  const response = await localApi.get(`/api/pokemon/${id}`);
   const { data } = response;
   return data;
 };
 
 const getPokemonByName = async (name: string) => {
-  const response = await api.get(`${pokemonService.getPokemon}/${name}`);
+  const response = await localApi.get(`/api/pokemon/${name}`);
   const { data } = response;
   return data;
 };
